@@ -1,20 +1,21 @@
 package info.guardianproject.mrapp.server;
 
-import info.guardianproject.mrapp.R;
-import info.guardianproject.mrapp.media.MediaHelper;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
+import org.holoeverywhere.app.Activity;
 
-public class WebViewActivity extends SherlockActivity {
+import info.guardianproject.mrapp.R;
+import info.guardianproject.mrapp.media.MediaHelper;
+
+public class WebViewActivity extends Activity {
 
 	WebView mWebView;
 	MediaHelper mMediaHelper;
@@ -25,7 +26,7 @@ public class WebViewActivity extends SherlockActivity {
 
         setContentView(R.layout.activity_web_view);
 
-        getSherlock().getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         
         Intent intent = getIntent();
         if (intent != null)
@@ -83,13 +84,7 @@ public class WebViewActivity extends SherlockActivity {
        // getSupportMenuInflater().inflate(R.menu.activity_lesson_list, menu);
         return true;
     }
-    
 
-	@Override
-	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-
-		return super.onMenuItemSelected(featureId, item);
-	}
 
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {

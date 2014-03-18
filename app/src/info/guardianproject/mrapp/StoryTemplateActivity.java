@@ -1,8 +1,5 @@
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.media.MediaProjectManager;
-import info.guardianproject.mrapp.model.Project;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,9 +8,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 
-import com.actionbarsherlock.app.ActionBar;
+import info.guardianproject.mrapp.media.MediaProjectManager;
+import info.guardianproject.mrapp.model.Project;
 
 public class StoryTemplateActivity extends EditorBaseActivity implements ActionBar.TabListener {
 

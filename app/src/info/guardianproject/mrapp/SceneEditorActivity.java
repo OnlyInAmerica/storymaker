@@ -1,12 +1,25 @@
 
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.media.MediaProjectManager;
-import info.guardianproject.mrapp.media.OverlayCameraActivity;
-import info.guardianproject.mrapp.model.template.Clip;
-import info.guardianproject.mrapp.model.template.Template;
-import info.guardianproject.mrapp.model.Project;
-import info.guardianproject.mrapp.model.Scene;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.view.ActionMode;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
+import net.micode.soundrecorder.SoundRecorder;
+
+import org.holoeverywhere.app.AlertDialog;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,24 +31,13 @@ import java.util.Date;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import net.micode.soundrecorder.SoundRecorder;
+import info.guardianproject.mrapp.media.MediaProjectManager;
+import info.guardianproject.mrapp.media.OverlayCameraActivity;
+import info.guardianproject.mrapp.model.Project;
+import info.guardianproject.mrapp.model.Scene;
+import info.guardianproject.mrapp.model.template.Clip;
+import info.guardianproject.mrapp.model.template.Template;
 
-import org.holoeverywhere.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.ActionMode;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 
 public class SceneEditorActivity extends EditorBaseActivity implements ActionBar.TabListener {
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
@@ -153,7 +155,7 @@ public class SceneEditorActivity extends EditorBaseActivity implements ActionBar
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
-        getSupportMenuInflater().inflate(R.menu.activity_scene_editor, menu);
+        getMenuInflater().inflate(R.menu.activity_scene_editor, menu);
         mMenu = menu;
         
         return true;
@@ -191,7 +193,7 @@ public class SceneEditorActivity extends EditorBaseActivity implements ActionBar
                 if (mFragmentTab1 != null) { 
                     ((OrderClipsFragment) mFragmentTab1).loadTrim();
                     ((OrderClipsFragment) mFragmentTab1).enableTrimMode(true);
-                    startActionMode(mActionModeCallback);
+                    startSupportActionMode(mActionModeCallback);
                 }
                 return true;
                 

@@ -1,15 +1,10 @@
 package info.guardianproject.mrapp;
 
-import java.util.Date;
-
-import org.holoeverywhere.widget.Toast;
-
-import info.guardianproject.mrapp.R;
-import info.guardianproject.mrapp.model.Project;
-import info.guardianproject.mrapp.model.Scene;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,8 +13,13 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
+import org.holoeverywhere.widget.Toast;
+
+import java.util.Date;
+
+import info.guardianproject.mrapp.model.Project;
+import info.guardianproject.mrapp.model.Scene;
+
 
 public class StoryNewActivity extends BaseActivity {
 
@@ -204,7 +204,7 @@ public class StoryNewActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.activity_new_story, menu);
+        getMenuInflater().inflate(R.menu.activity_new_story, menu);
         return true;
     }
 

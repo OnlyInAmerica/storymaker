@@ -1,10 +1,21 @@
 
 package info.guardianproject.mrapp.lessons;
 
-import info.guardianproject.mrapp.AppConstants;
-import info.guardianproject.mrapp.R;
-import info.guardianproject.mrapp.model.Lesson;
-import info.guardianproject.onionkit.trust.StrongHttpsClient;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Query;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -23,25 +34,14 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import org.apache.commons.io.IOUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import ch.boye.httpclientandroidlib.HttpEntity;
 import ch.boye.httpclientandroidlib.HttpResponse;
 import ch.boye.httpclientandroidlib.client.methods.HttpGet;
 import ch.boye.httpclientandroidlib.util.EntityUtils;
+import info.guardianproject.mrapp.AppConstants;
+import info.guardianproject.mrapp.R;
+import info.guardianproject.mrapp.model.Lesson;
+import info.guardianproject.onionkit.trust.StrongHttpsClient;
 
 public class LessonManager implements Runnable {
     protected final static String TAG = "LessonManager";
@@ -209,8 +209,8 @@ public class LessonManager implements Runnable {
             mHttpClient = new StrongHttpsClient(mContext);
         }
         
-        mHttpClient.getStrongTrustManager().setNotifyVerificationSuccess(true);
-        mHttpClient.getStrongTrustManager().setNotifyVerificationFail(true);
+        //mHttpClient.getStrongTrustManager().setNotifyVerificationSuccess(true);
+        //mHttpClient.getStrongTrustManager().setNotifyVerificationFail(true);
 
         // HttpParams params = mHttpClient.getParams();
         // HttpConnectionParams.setConnectionTimeout(params, SO_TIMEOUT);

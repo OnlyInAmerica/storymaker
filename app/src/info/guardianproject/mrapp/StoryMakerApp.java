@@ -1,8 +1,17 @@
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.lessons.LessonManager;
-import info.guardianproject.mrapp.media.MediaProjectManager;
-import info.guardianproject.mrapp.server.ServerManager;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.os.Environment;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import net.sqlcipher.database.SQLiteDatabase;
+
+import org.holoeverywhere.app.Application;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,19 +21,11 @@ import java.io.OutputStreamWriter;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
-//import com.google.analytics.tracking.android.GoogleAnalytics;
+import info.guardianproject.mrapp.lessons.LessonManager;
+import info.guardianproject.mrapp.media.MediaProjectManager;
+import info.guardianproject.mrapp.server.ServerManager;
 
-import net.sqlcipher.database.SQLiteDatabase;
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
-import android.app.Application;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.os.Environment;
-import android.preference.PreferenceManager;
-import android.util.Log;
+//import com.google.analytics.tracking.android.GoogleAnalytics;
 
 public class StoryMakerApp extends Application {
 

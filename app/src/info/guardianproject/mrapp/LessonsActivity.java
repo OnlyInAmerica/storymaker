@@ -1,12 +1,5 @@
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.lessons.LessonListView;
-import info.guardianproject.mrapp.lessons.WebViewSetupJB;
-
-import org.holoeverywhere.LayoutInflater;
-import org.holoeverywhere.app.Fragment;
-import org.holoeverywhere.app.ProgressDialog;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,20 +7,27 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
-import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.WebSettings.PluginState;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
+import org.holoeverywhere.LayoutInflater;
+import org.holoeverywhere.app.Fragment;
+import org.holoeverywhere.app.ProgressDialog;
+import org.holoeverywhere.widget.ViewPager;
+
+import info.guardianproject.mrapp.lessons.LessonListView;
+import info.guardianproject.mrapp.lessons.WebViewSetupJB;
+
 
 public class LessonsActivity extends BaseActivity implements ActionBar.TabListener {
 
@@ -97,7 +97,7 @@ public class LessonsActivity extends BaseActivity implements ActionBar.TabListen
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.activity_lessons, menu);
+        getMenuInflater().inflate(R.menu.activity_lessons, menu);
         return true;
     }
 

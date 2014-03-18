@@ -1,12 +1,5 @@
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.model.Media;
-import info.guardianproject.mrapp.model.Project;
-
-import java.util.ArrayList;
-
-import org.holoeverywhere.app.AlertDialog;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,18 +8,24 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
+import org.holoeverywhere.app.AlertDialog;
+
+import java.util.ArrayList;
+
+import info.guardianproject.mrapp.model.Media;
+import info.guardianproject.mrapp.model.Project;
 
 public class ProjectsActivity extends BaseActivity {
 
@@ -67,7 +66,7 @@ public class ProjectsActivity extends BaseActivity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.activity_projects, menu);
+        getMenuInflater().inflate(R.menu.activity_projects, menu);
         return true;
     }
 

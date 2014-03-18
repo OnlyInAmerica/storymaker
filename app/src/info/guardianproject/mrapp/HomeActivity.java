@@ -1,31 +1,5 @@
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.lessons.LessonManager;
-import info.guardianproject.mrapp.model.Lesson;
-import info.guardianproject.mrapp.model.LessonGroup;
-import info.guardianproject.mrapp.model.Media;
-import info.guardianproject.mrapp.model.Project;
-import info.guardianproject.mrapp.server.LoginActivity;
-import info.guardianproject.mrapp.ui.MyCard;
-import info.guardianproject.onionkit.ui.OrbotHelper;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
-
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.UpdateManager;
-
-import org.holoeverywhere.app.AlertDialog;
-import org.holoeverywhere.app.ProgressDialog;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,16 +19,43 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.fima.cardsui.views.CardUI;
-//import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.viewpagerindicator.CirclePageIndicator;
+
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
+
+import org.holoeverywhere.app.AlertDialog;
+import org.holoeverywhere.app.ProgressDialog;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Locale;
+
+import info.guardianproject.mrapp.lessons.LessonManager;
+import info.guardianproject.mrapp.model.Lesson;
+import info.guardianproject.mrapp.model.LessonGroup;
+import info.guardianproject.mrapp.model.Media;
+import info.guardianproject.mrapp.model.Project;
+import info.guardianproject.mrapp.server.LoginActivity;
+import info.guardianproject.mrapp.ui.MyCard;
+import info.guardianproject.onionkit.ui.OrbotHelper;
+
+//import com.google.analytics.tracking.android.GoogleAnalytics;
 
 public class HomeActivity extends BaseActivity {
 
@@ -625,7 +626,7 @@ public class HomeActivity extends BaseActivity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.activity_home, menu);
+        getMenuInflater().inflate(R.menu.activity_home, menu);
         return true;
     }
 

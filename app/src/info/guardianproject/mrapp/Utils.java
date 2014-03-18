@@ -1,20 +1,19 @@
 package info.guardianproject.mrapp;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import org.holoeverywhere.app.Activity;
-import org.holoeverywhere.widget.Toast;
-
-import com.actionbarsherlock.view.MenuItem;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.ActionProvider;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+
+import org.holoeverywhere.app.Activity;
+import org.holoeverywhere.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Utils {
     public static void toastOnUiThread(Activity activity, String message) {

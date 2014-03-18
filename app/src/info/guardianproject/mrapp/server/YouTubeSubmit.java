@@ -15,10 +15,22 @@
 
 package info.guardianproject.mrapp.server;
 
-import info.guardianproject.mrapp.AppConstants;
-import info.guardianproject.mrapp.R;
-import info.guardianproject.mrapp.server.Authorizer.AuthorizationListener;
-import info.guardianproject.onionkit.trust.StrongHttpsClient;
+import android.accounts.Account;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -35,28 +47,16 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import android.accounts.Account;
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import ch.boye.httpclientandroidlib.Header;
 import ch.boye.httpclientandroidlib.HttpResponse;
 import ch.boye.httpclientandroidlib.client.methods.HttpPost;
 import ch.boye.httpclientandroidlib.entity.AbstractHttpEntity;
 import ch.boye.httpclientandroidlib.entity.StringEntity;
 import ch.boye.httpclientandroidlib.protocol.HTTP;
+import info.guardianproject.mrapp.AppConstants;
+import info.guardianproject.mrapp.R;
+import info.guardianproject.mrapp.server.Authorizer.AuthorizationListener;
+import info.guardianproject.onionkit.trust.StrongHttpsClient;
 
 public class YouTubeSubmit {
 
@@ -163,8 +163,8 @@ public class YouTubeSubmit {
 
 	httpClient = new StrongHttpsClient(mContext);
 
-	httpClient.getStrongTrustManager().setNotifyVerificationSuccess(true);
-	httpClient.getStrongTrustManager().setNotifyVerificationFail(true);
+	//httpClient.getStrongTrustManager().setNotifyVerificationSuccess(true);
+	//httpClient.getStrongTrustManager().setNotifyVerificationFail(true);
 	
 
     mUseTor = settings.getBoolean("pusetor", false);

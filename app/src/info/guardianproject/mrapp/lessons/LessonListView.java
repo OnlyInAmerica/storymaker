@@ -1,29 +1,30 @@
 
 package info.guardianproject.mrapp.lessons;
 
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import org.holoeverywhere.preference.PreferenceManager;
+import org.holoeverywhere.preference.SharedPreferences;
+import org.holoeverywhere.widget.ArrayAdapter;
+import org.holoeverywhere.widget.ListAdapterWrapper;
+import org.holoeverywhere.widget.ListView;
+import org.holoeverywhere.widget.Toast;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Locale;
+
 import info.guardianproject.mrapp.AppConstants;
 import info.guardianproject.mrapp.LessonsActivity;
 import info.guardianproject.mrapp.R;
 import info.guardianproject.mrapp.StoryMakerApp;
 import info.guardianproject.mrapp.model.Lesson;
 import info.guardianproject.mrapp.model.LessonGroup;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.holoeverywhere.widget.ListAdapterWrapper;
-import org.holoeverywhere.widget.ListView;
-import org.holoeverywhere.widget.Toast;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Message;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.widget.ArrayAdapter;
 
 public class LessonListView extends ListView implements LessonManagerListener {
 
@@ -42,7 +43,6 @@ public class LessonListView extends ListView implements LessonManagerListener {
 
     public LessonListView(Context context, LessonsActivity activity) {
         super(context);
-
         setDivider(null);
         setDividerHeight(0);
 
@@ -127,9 +127,10 @@ public class LessonListView extends ListView implements LessonManagerListener {
                         R.string.no_lessons_available_tap_to_load_);
             }
             else {
-                lg.mStatus = String.format("%d" + getContext().getString(R.string._of_) + "%d"
-                        + getContext().getString(R.string._lesson_complete), lessonsComplete,
-                        lessons.size());
+//                lg.mStatus = String.format("%d" + getContext().getString(R.string._of_) + "%d"
+//                        + getContext().getString(R.string._lesson_complete), lessonsComplete,
+//                        lessons.size());
+                lg.mStatus = lessonsComplete + getContext().getString(R.string._of_) + lessons.size() + getContext().getString(R.string._lesson_complete);
             }
             mLessonGroups.add(lg);
         }

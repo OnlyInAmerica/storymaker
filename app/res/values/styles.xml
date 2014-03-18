@@ -1,6 +1,6 @@
 <resources>
 
-	<style name="CustomDialogTheme" parent="@android:style/Theme.Dialog">
+	<style name="CustomDialogTheme" parent="@style/Holo.Theme.Dialog">
 	<item name="android:windowBackground">@color/transparent_black</item>
 	<item name="android:windowIsFloating">false</item>
 	<item name="android:windowNoTitle">true</item>

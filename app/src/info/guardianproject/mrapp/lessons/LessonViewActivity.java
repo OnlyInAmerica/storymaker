@@ -1,16 +1,5 @@
 package info.guardianproject.mrapp.lessons;
 
-import info.guardianproject.mrapp.AppConstants;
-import info.guardianproject.mrapp.BaseActivity;
-import info.guardianproject.mrapp.R;
-import info.guardianproject.mrapp.StoryMakerApp;
-import info.guardianproject.mrapp.media.MediaHelper;
-import info.guardianproject.mrapp.model.Lesson;
-
-import java.io.IOException;
-
-import org.holoeverywhere.widget.Toast;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,14 +7,25 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
+import org.holoeverywhere.widget.Toast;
+
+import java.io.IOException;
+
+import info.guardianproject.mrapp.AppConstants;
+import info.guardianproject.mrapp.BaseActivity;
+import info.guardianproject.mrapp.R;
+import info.guardianproject.mrapp.StoryMakerApp;
+import info.guardianproject.mrapp.media.MediaHelper;
+import info.guardianproject.mrapp.model.Lesson;
+
 
 @SuppressLint("NewApi")
 public class LessonViewActivity extends BaseActivity {
@@ -158,11 +158,6 @@ public class LessonViewActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // getSupportMenuInflater().inflate(R.menu.activity_lesson_list, menu);
         return true;
-    }
-
-    @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        return super.onMenuItemSelected(featureId, item);
     }
 
     @Override

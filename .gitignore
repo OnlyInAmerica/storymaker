@@ -20,3 +20,10 @@ local.properties
 
 # Mac OS junk
 .DS_Store
+
+# Android Studio
+.idea/
+.gradle
+*.iml
+app/build
+external/WordpressJavaAndroid/build/

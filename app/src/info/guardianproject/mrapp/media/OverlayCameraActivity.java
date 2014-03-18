@@ -1,11 +1,5 @@
 package info.guardianproject.mrapp.media;
 
-import info.guardianproject.mrapp.AppConstants;
-import info.guardianproject.mrapp.ui.ActivitySwipeDetector;
-import info.guardianproject.mrapp.ui.SwipeInterface;
-
-import java.io.IOException;
-
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Picture;
@@ -27,12 +21,19 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 
-import com.actionbarsherlock.app.SherlockActivity;
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
 
+import org.holoeverywhere.app.Activity;
 
-public class OverlayCameraActivity extends SherlockActivity implements Callback, SwipeInterface 
+import java.io.IOException;
+
+import info.guardianproject.mrapp.AppConstants;
+import info.guardianproject.mrapp.ui.ActivitySwipeDetector;
+import info.guardianproject.mrapp.ui.SwipeInterface;
+
+
+public class OverlayCameraActivity extends Activity implements Callback, SwipeInterface
 {
    
 

@@ -1,9 +1,5 @@
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.R;
-import info.guardianproject.mrapp.model.Project;
-import info.guardianproject.mrapp.model.Scene;
-import info.guardianproject.mrapp.model.template.Template;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +10,18 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.viewpagerindicator.CirclePageIndicator;
+
+import info.guardianproject.mrapp.model.Project;
+import info.guardianproject.mrapp.model.Scene;
+import info.guardianproject.mrapp.model.template.Template;
 
 public class StoryTemplateChooserActivity extends BaseActivity {
     private String mTemplatePath;
@@ -119,7 +119,7 @@ public class StoryTemplateChooserActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.activity_choose_template, menu);
+        getMenuInflater().inflate(R.menu.activity_choose_template, menu);
         return true;
     }
 
