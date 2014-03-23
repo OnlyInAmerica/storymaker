@@ -2,7 +2,7 @@
 
 The following describes the process required to modify StoryMaker to build with gradle.
 
-1. Add <application /> tag to HoloEverywhere and SlidingMenu Manifests (Required by the Android gradle plugin)
+1. Add `<application />` tag to HoloEverywhere and SlidingMenu Manifests (Required by the Android gradle plugin)
 2. Fix ABS / SlidingMenu minSdkVersion mismatch. The Android Gradle Plugin doesn't allow an android library project
    to have a greater minSdkVersion than it's host project / library project.
 
@@ -27,6 +27,8 @@ The following describes the process required to modify StoryMaker to build with 
             exclude 'META-INF/LICENSE'
             exclude 'META-INF/NOTICE'
         }
+        
+	The Android gradle plugin generates html lint reports when building. You can check them out after building in `/path/to/project/build/lint-results.html`
 
 7. Excuse linter errors for Storymaker, HoloEverywhere:lib, CardsUiLib, ActionBarSherlock
 
