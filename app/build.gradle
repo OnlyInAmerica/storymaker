@@ -51,6 +51,12 @@ android {
             jniLibs.srcDir file('libs/')
         }
 
+        defaultConfig {
+            minSdkVersion 10
+            targetSdkVersion 19
+        }
+
+
 
         // If you'd like to provide special files for the debug / release build variants
         // you can do so by adding files to the directories defined below
