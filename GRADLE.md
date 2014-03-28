@@ -156,3 +156,12 @@ Then build a debug-signed .apk
 	$ ./gradlew assembleDebug
 	
 The apk will reside at `./app/build/apk/`.
+
+## Running Tests with gradle
+
+Install the Android SDK modules specified in **Building with gradle**.
+
+To run the included tests on all devices available to adb:
+
+	$ ./gradlew connectedAndroidTest
+	
