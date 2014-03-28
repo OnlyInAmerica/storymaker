@@ -1,11 +1,68 @@
 apply plugin: 'android'
 
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.3"
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 19
+
+        testPackageName "info.guardianproject.mrapp.test"
+        testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
+        testFunctionalTest true
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDir file('libs/')
+        }
+
+        androidTest {
+            java.srcDirs = ['tests/src']
+        }
+        //androidTest.setRoot('tests')
+
+        // If you'd like to provide special files for the debug / release build variants
+        // you can do so by adding files to the directories defined below
+        //
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    // Temporarily ignore linter errors.
+    lintOptions {
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'LICENSE.txt'
+    }
+
+}
+
 dependencies {
     // We'd use the below line to import all jars
     // but we're currently ignoring httpclientandroidlib-1.1.2.jar (provided by libonionkit),
     // and android-support-v4 (provided by ActionBarSherlock)
-    //
-    //compile fileTree(dir: 'libs', include: '*.jar')
+    // compile fileTree(dir: 'libs', include: '*.jar')
 
     // .Jar imports
     compile files('libs/apache-mime4j-0.6.jar')
@@ -33,54 +90,26 @@ dependencies {
     compile project(':external:RangeSeekBar:library')
     compile project(':external:OnionKit:libonionkit')
 
-}
-
-android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
-
-    sourceSets {
-        main {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src']
-            resources.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
-            res.srcDirs = ['res']
-            assets.srcDirs = ['assets']
-            jniLibs.srcDir file('libs/')
-        }
-
-        defaultConfig {
-            minSdkVersion 10
-            targetSdkVersion 19
-        }
+    // Test dependencies
+    androidTestCompile files('libs/espresso-1.1.jar',
+            'libs/testrunner-1.1.jar',
+            'libs/testrunner-runtime-1.1.jar',
+            'libs/hamcrest-library-1.1.jar',
+            'libs/hamcrest-integration-1.1.jar',
+            'libs/dagger-1.1.0.jar',
+            'libs/dagger-compiler-1.1.0.jar',
+            'libs/hamcrest-core-1.1.jar',
+            'libs/javawriter-2.1.1.jar',
+            'libs/javax.annotation-api-1.2.jar',
+            'libs/javax.inject-1.jar',
+            'libs/jsr305-1.3.9.jar',
+            'libs/spoon-client-1.1.1.jar')
 
 
-
-        // If you'd like to provide special files for the debug / release build variants
-        // you can do so by adding files to the directories defined below
-        //
-        // Move the build types to build-types/<type>
-        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
-        // This moves them out of them default location under src/<type>/... which would
-        // conflict with src/ being used by the main source set.
-        // Adding new build types or product flavors should be accompanied
-        // by a similar customization.
-        debug.setRoot('build-types/debug')
-        release.setRoot('build-types/release')
-    }
-
-    // Temporarily ignore linter errors.
-    lintOptions {
-        abortOnError false
-    }
-
-    packagingOptions {
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-    }
+//    androidTestCompile 'com.google.guava:guava:14.0.1',
+//            'com.squareup.dagger:dagger:1.1.0',
+//            'org.hamcrest:hamcrest-core:1.1',
+//            'org.hamcrest:hamcrest-integration:1.1',
+//            'org.hamcrest:hamcrest-library:1.1'
 
 }

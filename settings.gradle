@@ -1,6 +1,6 @@
+include ':app'
 include ':external:Android-ViewPagerIndicator:library'
 include ':external:HoloEverywhere:library'
-include ':app'
 include ':external:HoloEverywhere:contrib:ActionBarSherlock:actionbarsherlock'
 include ':external:WordpressJavaAndroid'
 include ':external:SlidingMenu:library'

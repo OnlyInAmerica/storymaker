@@ -135,3 +135,24 @@ the `build.gradle` of the depending project.
         // Import a single .jar
         compile files('libs/apache-mime4j-0.6.jar')
     }
+    
+    
+## Building with gradle
+
+Make sure you have the following installed from the Android SDK Manager
+
++ Android Support Repository
++ Android SDK Platforms 14, 18, 19
++ Android SDK Build-tools 19.0.3
++ Android SDK Tools 22.6.2
+
+First clone the repository and checkout submodules
+
+	$ git clone -b gradle2 --recursive https://github.com/OnlyInAmerica/storymaker.git
+	
+Then build a debug-signed .apk
+
+	$ cd /path/to/storymaker/
+	$ ./gradlew assembleDebug
+	
+The apk will reside at `./app/build/apk/`.
