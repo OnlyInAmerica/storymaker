@@ -1,30 +1,12 @@
-
 package info.guardianproject.mrapp.test;
 
 import android.app.Instrumentation.ActivityMonitor;
 import android.support.v4.view.ViewPager;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
 
-import com.google.android.apps.common.testing.ui.espresso.Espresso;
 import com.slidingmenu.lib.SlidingMenu;
 import com.squareup.spoon.Spoon;
 
-import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
-import static com.google.android.apps.common.testing.ui.espresso.Espresso.closeSoftKeyboard;
-import static com.google.android.apps.common.testing.ui.espresso.Espresso.pressBack;
-import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
-import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.swipeLeft;
-import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.swipeRight;
-import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.typeText;
-import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withId;
-import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withClassName;
-import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withText;
-import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.isAssignableFrom;
-import static com.google.android.apps.common.testing.ui.espresso.assertion.ViewAssertions.matches;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.is;
 import info.guardianproject.mrapp.HomeActivity;
 import info.guardianproject.mrapp.ProjectsActivity;
 import info.guardianproject.mrapp.R;
@@ -36,11 +18,23 @@ import info.guardianproject.mrapp.test.actions.OpenSlidingMenuAction;
 import info.guardianproject.mrapp.test.actions.SwipeThroughViewPagerAction;
 import info.guardianproject.mrapp.test.actions.SwipeThroughViewPagerAction.DIRECTION;
 
+import static com.google.android.apps.common.testing.ui.espresso.Espresso.closeSoftKeyboard;
+import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
+import static com.google.android.apps.common.testing.ui.espresso.Espresso.pressBack;
+import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
+import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.typeText;
+import static com.google.android.apps.common.testing.ui.espresso.assertion.ViewAssertions.matches;
+import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withId;
+import static com.google.android.apps.common.testing.ui.espresso.matcher.ViewMatchers.withText;
+import static info.guardianproject.mrapp.test.matchers.Matchers.withIdAndParentId;
+import static info.guardianproject.mrapp.test.util.Util.handleStoryMakerStartupDialogs;
+
 /**
  * Functional test of Creating Stories Exercises MainActivity, ProjectsActivity,
  * StoryNewActivity, SceneEditorActivity, StoryTemplateChooserActivity,
  * StoryTemplateActivity
- * 
+ *
  * @author davidbrodsky
  */
 public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivity> {
@@ -48,18 +42,18 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
 
     public enum MEDIUM {
         VIDEO, PHOTO, AUDIO, MULTI_PHOTO
-    };
+    }
 
     public enum STORY_TYPE {
         SIMPLE, TEMPLATE
-    };
+    }
 
     public enum STORY_TEMPLATES {
         BASIC, EXPERT
     }
 
     public static final String TEST_STORY_TITLE_PREFIX = "Gerald Ford: ";
-    public static final int ACTIVITY_LAUNCH_TIMEOUT_MS = 1000;
+    public static final int ACTIVITY_LAUNCH_TIMEOUT_MS = 3000;
 
     public TestCreateStory() {
         super(HomeActivity.class);
@@ -78,6 +72,8 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
 
         STORY_TYPE[] types = STORY_TYPE.values();
         MEDIUM[] mediums = MEDIUM.values();
+
+        handleStoryMakerStartupDialogs();
 
         for (int typeIndex = 0; typeIndex < types.length; typeIndex++) {
             for (int mediumIndex = 0; mediumIndex < mediums.length; mediumIndex++) {
@@ -136,10 +132,10 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
                 onView(withId(R.id.editTextStoryName)).check(matches(withText(testTitle)));
                 closeSoftKeyboard();
                 // Choose a Medium
-                onView(Matchers.withIdAndParentId(getRadioButtonIdForMedium(testMedium),
+                onView(withIdAndParentId(getRadioButtonIdForMedium(testMedium),
                         R.id.radioGroupStoryType)).perform(click());
                 // Choose Simple / Scene Template
-                onView(Matchers.withIdAndParentId(getRadioButtonIdForStoryType(testType),
+                onView(withIdAndParentId(getRadioButtonIdForStoryType(testType),
                         R.id.radioGroupStoryLevel)).perform(click());
 
                 // StoryNewActivity form input complete
@@ -161,8 +157,9 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
                             sceneEditorActivityMonitor
                                     .waitForActivityWithTimeout(ACTIVITY_LAUNCH_TIMEOUT_MS);
                     assertNotNull("SceneEditorActivity did not launch as expected. state: "
-                            + testMedium + " " + testType,
-                            storyNewActivity);
+                                    + testMedium + " " + testType,
+                            storyNewActivity
+                    );
                     assertEquals("Monitor for SceneEditorActivity has not been called",
                             1, storyNewActivityMonitor.getHits());
                     getInstrumentation().removeMonitor(storyNewActivityMonitor);
@@ -195,14 +192,16 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
                     assertNotNull(
                             "StoryTemplateChooserActivity did not launch as expected. state: "
                                     + testMedium + " " + testType,
-                            storyTemplateChooserActivity);
+                            storyTemplateChooserActivity
+                    );
                     assertEquals("Monitor for StoryTemplateChooserActivity has not been called",
                             1, storyNewActivityMonitor.getHits());
                     getInstrumentation().removeMonitor(storyTemplateChooserActivityMonitor);
                     Spoon.screenshot(
                             storyTemplateChooserActivity,
                             describeTestState("story_template_chooser_activity", testMedium,
-                                    testType));
+                                    testType)
+                    );
 
                     // Swipe through Story Type ViewPager
                     // TODO: Loop through every story type
@@ -223,8 +222,9 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
                             storyTemplateActivityMonitor
                                     .waitForActivityWithTimeout(ACTIVITY_LAUNCH_TIMEOUT_MS);
                     assertNotNull("StoryTemplateActivity did not launch as expected. state: "
-                            + testMedium + " " + testType,
-                            storyTemplateActivity);
+                                    + testMedium + " " + testType,
+                            storyTemplateActivity
+                    );
                     assertEquals("Monitor for StoryTemplateActivity has not been called", 1,
                             storyTemplateActivityMonitor.getHits());
                     getInstrumentation().removeMonitor(storyTemplateActivityMonitor);
@@ -254,7 +254,7 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
 
     /**
      * Generate a title for Spoon's screenshot function
-     * 
+     *
      * @return
      */
     private static String describeTestState(String state, MEDIUM medium, STORY_TYPE storyType) {
@@ -263,7 +263,7 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
 
     /**
      * Generate a test Story title given the test state
-     * 
+     *
      * @param prefix
      * @param medium
      * @param storyType
@@ -294,7 +294,7 @@ public class TestCreateStory extends ActivityInstrumentationTestCase2<HomeActivi
     /**
      * Given a Story's STORY_TYPE, return the id of the corresponding
      * "Simple Story" / "Scene Template" Radio Button in StoryNewActivity
-     * 
+     *
      * @param type
      * @return
      */

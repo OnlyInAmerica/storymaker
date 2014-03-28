@@ -1,28 +1,31 @@
 package info.guardianproject.mrapp;
-import info.guardianproject.mrapp.server.LoginActivity;
+
+import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PixelFormat;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.slidingmenu.lib.SlidingMenu;
+import com.slidingmenu.lib.SlidingMenu.OnClosedListener;
+
+import org.holoeverywhere.app.Activity;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 
-import org.holoeverywhere.app.Activity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.PixelFormat;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import info.guardianproject.mrapp.server.LoginActivity;
 
 //import com.google.analytics.tracking.android.EasyTracker;
-import com.slidingmenu.lib.SlidingMenu;
-import com.slidingmenu.lib.SlidingMenu.OnClosedListener;
 
 public class BaseActivity extends Activity {
 
@@ -182,7 +185,6 @@ public class BaseActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
     
     	super.onCreate(savedInstanceState);
-        
         (new Eula(this)).show();
     }
     

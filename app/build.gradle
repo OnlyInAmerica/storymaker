@@ -64,22 +64,24 @@ dependencies {
     // and android-support-v4 (provided by ActionBarSherlock)
     // compile fileTree(dir: 'libs', include: '*.jar')
 
-    // .Jar imports
+    // .Jar dependencies
     compile files('libs/apache-mime4j-0.6.jar')
     compile files('libs/commons-io-2.4.jar')
     compile files('libs/commons-lang3-3.1.jar')
     compile files('libs/google-api-client-1.4.1-beta.jar')
     compile files('libs/google-api-client-googleapis-1.4.1-beta.jar')
     compile files('libs/google-api-services-latitude-v1-1.1.0-beta.jar')
-    compile files('libs/guava-r09.jar')
-    compile files('libs/HockeySDK.jar')
+    // guava imported from the Maven Central Repository. See below
+    //compile files('libs/guava-r09.jar')
+    // HockeySDK imported from the Maven Central Repository. See below
+    //compile files('libs/HockeySDK.jar')
     compile files('libs/httpmime-4.0.3.jar')
     compile files('libs/soundcloud-api-1.0.1.jar')
     compile files('libs/svg-android-1.1.jar')
     compile files('libs/wordpressjavaandroid.jar')
     compile files('libs/sqlcipher.jar')
 
-    // Project imports
+    // Project dependencies
     compile project(':external:android-ffmpeg-java')
     compile project(':external:WordpressJavaAndroid')
     compile project(':external:HoloEverywhere:library')
@@ -90,26 +92,22 @@ dependencies {
     compile project(':external:RangeSeekBar:library')
     compile project(':external:OnionKit:libonionkit')
 
-    // Test dependencies
+    // Maven dependencies
+    compile 'net.hockeyapp.android:HockeySDK:3.0.1'
+    compile 'com.google.guava:guava:16.0.1'
+
+    // Test .jar dependencies
     androidTestCompile files('libs/espresso-1.1.jar',
             'libs/testrunner-1.1.jar',
             'libs/testrunner-runtime-1.1.jar',
+            'libs/hamcrest-core-1.1.jar',
             'libs/hamcrest-library-1.1.jar',
             'libs/hamcrest-integration-1.1.jar',
             'libs/dagger-1.1.0.jar',
             'libs/dagger-compiler-1.1.0.jar',
-            'libs/hamcrest-core-1.1.jar',
             'libs/javawriter-2.1.1.jar',
             'libs/javax.annotation-api-1.2.jar',
             'libs/javax.inject-1.jar',
             'libs/jsr305-1.3.9.jar',
             'libs/spoon-client-1.1.1.jar')
-
-
-//    androidTestCompile 'com.google.guava:guava:14.0.1',
-//            'com.squareup.dagger:dagger:1.1.0',
-//            'org.hamcrest:hamcrest-core:1.1',
-//            'org.hamcrest:hamcrest-integration:1.1',
-//            'org.hamcrest:hamcrest-library:1.1'
-
 }

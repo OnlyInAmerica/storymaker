@@ -1,13 +1,12 @@
-package info.guardianproject.mrapp.test;
+package info.guardianproject.mrapp.test.matchers;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import android.view.View;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
-import android.view.View;
-import android.view.ViewParent;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public final class Matchers {
 

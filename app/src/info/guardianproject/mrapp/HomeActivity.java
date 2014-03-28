@@ -1,31 +1,5 @@
 package info.guardianproject.mrapp;
 
-import info.guardianproject.mrapp.lessons.LessonManager;
-import info.guardianproject.mrapp.model.Lesson;
-import info.guardianproject.mrapp.model.LessonGroup;
-import info.guardianproject.mrapp.model.Media;
-import info.guardianproject.mrapp.model.Project;
-import info.guardianproject.mrapp.server.LoginActivity;
-import info.guardianproject.mrapp.ui.MyCard;
-import info.guardianproject.onionkit.ui.OrbotHelper;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
-
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.UpdateManager;
-
-import org.holoeverywhere.app.AlertDialog;
-import org.holoeverywhere.app.ProgressDialog;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -53,8 +27,35 @@ import android.widget.TextView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.fima.cardsui.views.CardUI;
-//import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.viewpagerindicator.CirclePageIndicator;
+
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
+
+import org.holoeverywhere.app.AlertDialog;
+import org.holoeverywhere.app.ProgressDialog;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Locale;
+
+import info.guardianproject.mrapp.lessons.LessonManager;
+import info.guardianproject.mrapp.model.Lesson;
+import info.guardianproject.mrapp.model.LessonGroup;
+import info.guardianproject.mrapp.model.Media;
+import info.guardianproject.mrapp.model.Project;
+import info.guardianproject.mrapp.server.LoginActivity;
+import info.guardianproject.mrapp.ui.MyCard;
+import info.guardianproject.onionkit.ui.OrbotHelper;
+
+//import com.google.analytics.tracking.android.GoogleAnalytics;
 
 public class HomeActivity extends BaseActivity {
 
@@ -62,7 +63,6 @@ public class HomeActivity extends BaseActivity {
     private ProgressDialog mLoading;
     private ArrayList<Lesson> mLessonsCompleted;
     private ArrayList<Project> mListProjects;
-
 
 	CardUI mCardView;
     
@@ -96,7 +96,7 @@ public class HomeActivity extends BaseActivity {
     @Override
 	public void onResume() {
 		super.onResume();
-		
+
 		new getAsynctask().execute("");
 		
 		boolean isExternalStorageReady = ((StoryMakerApp)getApplication()).isExternalStorageReady();
@@ -111,8 +111,8 @@ public class HomeActivity extends BaseActivity {
             .show();
 			
 		}
-		
-		 checkForCrashes();
+
+        checkForCrashes();
 	}
 
 
@@ -802,8 +802,8 @@ public class HomeActivity extends BaseActivity {
 	}
 	
 	private void checkForCrashes() {
-	   CrashManager.register(this, AppConstants.HOCKEY_APP_ID);
-	 }
+        CrashManager.register(this, AppConstants.HOCKEY_APP_ID);
+	}
 
 	 private void checkForUpdates() {
 	   // Remove this for store builds!
